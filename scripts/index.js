@@ -1,12 +1,16 @@
 // @todo: Темплейт карточки
 const placesList = document.querySelector('.places__list');
 const cardTemplate = document.getElementById('card-template').content;
+const popup = document.querySelectorAll('.popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupClose = document.querySelector('.popup__close');
 
-popupTypeEdit.classList.add('popup_is-animated');
+console.log(popup);
 
+popup.forEach((popupElement) => {
+    popupElement.classList.add('popup_is-animated');
+});
 
 initialCards.forEach((item) => {
   const cardItem = cardTemplate.querySelector('li').cloneNode(true);
@@ -35,9 +39,6 @@ cardLikeButton.forEach(button => {
     });
 });
 
-
-
-
 // Редактирование профиля
 const profileFormElement = document.querySelector('.popup__form');
 function handleProfileFormSubmit(evt) {
@@ -54,10 +55,22 @@ profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 
 
 
-
 // @todo: DOM узлы
 
 // @todo: Функция создания карточки
+const profileAddButton = document.querySelector('.profile__add-button');
+const popupTypeNewCard = document.querySelector('.popup_type_new-card');
+
+// Закрытие окна для создания карточки
+profileAddButton.addEventListener('click', function() {
+    popupTypeNewCard.classList.add('popup_is-opened');
+});
+
+popupClose.addEventListener('click', function(evt) {
+    evt.target.classList.remove('popup_is-opened');
+});
+
+
 
 // @todo: Функция удаления карточки
 const cardDeleteButton = document.querySelectorAll('.card__delete-button');
@@ -69,7 +82,3 @@ cardDeleteButton.forEach(button => {
     }
    }); 
 });
-
-
-// @todo: Вывести карточки на страницу
-  
