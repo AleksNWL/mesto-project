@@ -5,6 +5,8 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupClose = document.querySelector('.popup__close');
 
+popupTypeEdit.classList.add('popup_is-animated');
+
 
 initialCards.forEach((item) => {
   const cardItem = cardTemplate.querySelector('li').cloneNode(true);
@@ -16,9 +18,8 @@ initialCards.forEach((item) => {
 
 
 // Открытие окна для редактирования профиля
-profileEditButton.addEventListener('click', function(evt) {
+profileEditButton.addEventListener('click', function() {
     popupTypeEdit.classList.add('popup_is-opened');
-    popupTypeEdit.classList.add('popup_is-animated');
 });
 
 // Закрытие окна для редактирования профиля
@@ -26,9 +27,12 @@ popupClose.addEventListener('click', function(evt) {
     popupTypeEdit.classList.remove('popup_is-opened');
 });
 
+const cardLikeButton = document.querySelectorAll('.card__like-button');
 // Добавление лайка
-placesList.addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__like-button_is-active');
+cardLikeButton.forEach(button => {
+    button.addEventListener('click', function(evt) {
+        evt.target.classList.toggle('card__like-button_is-active');
+    });
 });
 
 // Находим форму в DOM
@@ -65,6 +69,16 @@ profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 // @todo: Функция создания карточки
 
 // @todo: Функция удаления карточки
+const cardDeleteButton = document.querySelectorAll('.card__delete-button');
+cardDeleteButton.forEach(button => {
+   button.addEventListener('click', function(evt) {
+    const placeItem = evt.target.closest('.places__item');
+    if (placeItem) {
+        placeItem.remove();
+    }
+   }); 
+});
+
 
 // @todo: Вывести карточки на страницу
   
