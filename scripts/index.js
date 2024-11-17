@@ -35,32 +35,23 @@ cardLikeButton.forEach(button => {
     });
 });
 
-// Находим форму в DOM
-const profileFormElement = document.querySelector('.popup__form');// Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-const nameInput = document.querySelector('.popup__input_type_card-name');
-const jobInput = document.querySelector('.popup__input popup__input_type_url');
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+
+
+// Редактирование профиля
+const profileFormElement = document.querySelector('.popup__form');
 function handleProfileFormSubmit(evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
-
-    // Получите значение полей jobInput и nameInput из свойства value
-    console.log(nameInput.value);
-    // Выберите элементы, куда должны быть вставлены значения полей
-    const profileTitle = nameInput.value;
-    const profileDescription = jobInput.value;
-    // Вставьте новые значения с помощью textContent
-    profileTitle.textContent;
-    profileDescription.textContent;
+    evt.preventDefault();
+    const nameInput = document.querySelector('.popup__input_type_name').value;
+    const jobInput = document.querySelector('.popup__input_type_description').value;
+    
+    const profileTitle = document.querySelector('.profile__title');
+    const profileDescription = document.querySelector('.profile__description');
+    profileTitle.textContent = nameInput;
+    profileDescription.textContent = jobInput;
 }
-
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
+
 
 
 
