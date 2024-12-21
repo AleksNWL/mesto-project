@@ -1,0 +1,58 @@
+.profile__image {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-image: url('../../../images/avatar.jpg'); */
+  margin: 0 29px 0 0;
+  overflow: hidden;
+}
+
+.profile__image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачное затемнение */
+  opacity: 0;
+  transition: opacity 0.3s; /* Плавный переход */
+}
+
+.profile__image:hover::after {
+  opacity: 1; /* Затемнение при наведении */
+}
+
+.profile__image::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('../../../images/pencil.svg');
+  width: 26px;
+  height: 26px;
+  transition: opacity 0.3s; /* Плавный переход */
+  opacity: 0; /* Полная непрозрачность */
+  z-index: 1; /* Поверх затемнения */
+}
+
+.profile__image:hover::before {
+  opacity: 1;
+}
+
+
+@media screen and (max-width: 740px) {
+  .profile__image {
+    margin: 0 10px 0 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile__image {
+    margin-right: 0;
+  }
+}
